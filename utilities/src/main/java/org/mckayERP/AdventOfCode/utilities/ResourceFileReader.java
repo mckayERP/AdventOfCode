@@ -2,10 +2,8 @@ package org.mckayERP.AdventOfCode.utilities;
 
 import org.apache.commons.io.IOUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Optional;
 
 public class ResourceFileReader

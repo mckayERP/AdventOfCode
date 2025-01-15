@@ -14,7 +14,7 @@ public class MazeMap extends SimpleObjectMap implements ObjectMap
 
     public void initialize()
     {
-        initialize(map.size());
+        initialize(getMap().size());
     }
 
     public void initialize(int numberOfPoints) {
@@ -37,15 +37,15 @@ public class MazeMap extends SimpleObjectMap implements ObjectMap
 
     public void initializePathMap(int numberOfPoints) {
 
-        costMap = new XYMap<>(new Integer[maxRow+1][maxCol+1]);
-        objectMap = new XYMap<>(new MapObject[maxRow+1][maxCol+1]);
+        costMap = new XYMap<>(new Integer[getMaxRow()+1][getMaxCol()+1]);
+        objectMap = new XYMap<>(new MapObject[getMaxRow()+1][getMaxCol()+1]);
 
         costMap.setAllPositionsTo(Integer.MAX_VALUE);
         objectMap.setAllPositionsTo(null);
 
-        map.stream().limit(numberOfPoints).forEach(mo ->objectMap.setValueAt(mo.getPosition(), mo));
+        getMap().stream().limit(numberOfPoints).forEach(mo ->objectMap.setValueAt(mo.getPosition(), mo));
         nextMapPoint = numberOfPoints;
-        lastMapPoint = map.size()-1;
+        lastMapPoint = getMap().size()-1;
 
     }
 
@@ -55,9 +55,9 @@ public class MazeMap extends SimpleObjectMap implements ObjectMap
         while(deadendsExist)
         {
             deadendsExist = false;
-            for (int row = 0; row < maxRow; row++)
+            for (int row = 0; row < getMaxRow(); row++)
             {
-                for (int col = 0; col < maxCol; col++)
+                for (int col = 0; col < getMaxCol(); col++)
                 {
                     Position p = new Position(row, col);
                     if (notStartOrGoal(p))
@@ -96,7 +96,7 @@ public class MazeMap extends SimpleObjectMap implements ObjectMap
     public Position dropNext()
     {
 
-        MapObject mo = map.get(nextMapPoint++);
+        MapObject mo = getMap().get(nextMapPoint++);
         objectMap.setValueAt(mo.getPosition(), mo);
         return mo.getPosition();
 

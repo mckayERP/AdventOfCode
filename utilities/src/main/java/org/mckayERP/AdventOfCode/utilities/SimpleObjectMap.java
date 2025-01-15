@@ -1,4 +1,4 @@
-package org.mckayERP.AdventOfCode._2024.day16_ReindeerMaze;
+package org.mckayERP.AdventOfCode.utilities;
 
 import org.mckayERP.AdventOfCode.utilities.MapObject;
 import org.mckayERP.AdventOfCode.utilities.ObjectMap;
@@ -10,6 +10,11 @@ import java.util.stream.Stream;
 
 public class SimpleObjectMap implements ObjectMap
 {
+
+    public List<MapObject> getMap()
+    {
+        return map;
+    }
 
     List<MapObject> map = new ArrayList<>();
     int maxRow;

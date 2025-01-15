@@ -12,9 +12,12 @@
   <modules>
     <module>utilities</module>
     <module>2024</module>
+    <module>2023</module>
   </modules>
 
   <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -84,7 +87,9 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+          <forkCount>3</forkCount>
+          <reuseForks>true</reuseForks>
+          <argLine>@{argLine} -Xmx1024m -XX:MaxPermSize=256m -javaagent:${org.mockito:mockito-core:jar}</argLine>
         </configuration>
       </plugin>
     </plugins>

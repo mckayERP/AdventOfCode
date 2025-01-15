@@ -8,6 +8,7 @@ public abstract class AbstractMapLoader implements MapLoader
     public void readMapPattern(String[] input)
     {
 
+
         int row = 0;
 
         for (String line : input) {
